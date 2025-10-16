@@ -1,4 +1,8 @@
-# Compiled Lecture Notes for Honor Physics of UM-SJTU Joint Institute
+# <center>Compiled Lecture Notes</center>
+
+<center>for</center>
+
+Honor Physics of UM-SJTU Joint Institute
 
 ## Compilation
 
