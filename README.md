@@ -1,5 +1,7 @@
 Compiled Lecture Notes for Honor Physics at UM-SJTU Joint Institute.
 
+Inspired by Gilles Castel.
+
 ## Usage
 
 ### Compilation
