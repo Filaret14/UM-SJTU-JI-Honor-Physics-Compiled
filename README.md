@@ -20,4 +20,6 @@ $ latexmk -c
 
 ### Figures
 
-The figures are drawn using Inkscape, and exported as PDF + LaTeX using the Inkscape feature.
+The figures are drawn using Inkscape, and exported as PDF + LaTeX.
+
+Line widths are all set to `1pt`, and arrow tips does not scale.
