@@ -1,0 +1,310 @@
+\ProvidesPackage{tendo-notes-physics}
+
+% -------------------------------------------------------------------------
+%  Core Packages
+% -------------------------------------------------------------------------
+\RequirePackage{booktabs}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{titling}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{tocloft}
+\RequirePackage{multicol}
+\RequirePackage{wrapfig}
+\RequirePackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+\RequirePackage{mathrsfs}
+\RequirePackage[varqu,varl,scaled=.95]{inconsolata}
+\RequirePackage{stmaryrd}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.13}
+
+% -------------------------------------------------------------------------
+%  Basic Document Setup
+% -------------------------------------------------------------------------
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\droptitle}{-2cm}
+
+% -------------------------------------------------------------------------
+%  Title Page Customization
+% -------------------------------------------------------------------------
+\newcommand{\university}[1]{\textsc{#1}}
+\newcommand{\submissiondate}[1]{\textsc{#1}}
+\newcommand{\courseno}[1]{\textrm{\textbf{#1}}}
+\newcommand{\coursename}[1]{#1}
+
+\pretitle{\begin{center}\LARGE\bfseries}
+\posttitle{\par\end{center}\vskip 0.5em}
+\preauthor{\begin{center}\large}
+\postauthor{\par\end{center}}
+\predate{\begin{center}\large}
+\postdate{\par\end{center}}
+
+\newcommand{\makecustomtitlepage}[1]{%
+  \begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    \IfFileExists{#1}{\includegraphics[width=0.3\textwidth]{#1}}{\vspace{1cm}}
+    \vspace{1cm}
+
+    {\Huge\bfseries\thetitle\par}
+    \vspace{0.5cm}
+    {\Huge\courseno{\@courseno}\par}
+    {\coursename{\@coursename}\par}
+    \vspace{0.35cm}
+    {\large\university{\@courseuniversity}\par}
+    \vspace{5cm}
+
+    {\theauthor\par}
+    \vspace{1cm}
+    {\large\thedate\par}
+  \end{titlepage}
+}
+
+\newcommand{\setcourseno}[1]{\def\@courseno{#1}}
+\newcommand{\setcoursename}[1]{\def\@coursename{#1}}
+\newcommand{\setcourseuniversity}[1]{\def\@courseuniversity{#1}}
+
+% -------------------------------------------------------------------------
+%  Math Commands
+% -------------------------------------------------------------------------
+\newcommand\contra{\scalebox{1.1}{$\lightning$}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+
+% -------------------------------------------------------------------------
+%  Table of Contents Formatting
+% -------------------------------------------------------------------------
+\renewcommand{\cfttoctitlefont}{\rmfamily\Huge\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+\renewcommand{\cftpartfont}{\Large\rmfamily\bfseries}
+\renewcommand{\cftchapfont}{\sffamily\bfseries}
+
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsubsecfont}{\sffamily}
+
+\cftpagenumbersoff{part}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries}
+\renewcommand{\cftsecpagefont}{\sffamily}
+\renewcommand{\cftsubsecpagefont}{\sffamily}
+\renewcommand{\cftsubsubsecpagefont}{\sffamily}
+
+\newcommand{\toc}{\tableofcontents}
+
+% -------------------------------------------------------------------------
+%  Section Title Formatting
+% -------------------------------------------------------------------------
+\titleclass{\part}{straight}
+\titleclass{\chapter}{straight}
+\renewcommand{\thepart}{\Alph{part}}
+
+\titleformat{\part}[display]
+  {\LARGE\sc}
+  {\centering\Huge\textbf{\textrm{Part \thepart}}}
+  {0em}
+  {\centering}
+  [\vspace{0.7cm}]
+
+\titleformat{\chapter}[display]
+  {\LARGE\rm}
+  {\textbf{\textrm{Chapter \thechapter}}}
+  {0em}
+  {}
+  [\vspace{-0.8cm}]
+
+\titleformat{\section}
+  {\Large\bfseries\rmfamily}
+  {\thesection}
+  {1em}
+  {}
+
+\titleformat{\subsection}
+  {\large\bfseries\rmfamily}
+  {\thesubsection}
+  {1em}
+  {}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\rmfamily}
+  {\thesubsubsection}
+  {1em}
+  {}
+
+% -------------------------------------------------------------------------
+%  TikZ and PGF Setup
+% -------------------------------------------------------------------------
+\usetikzlibrary{intersections, angles, quotes, calc, positioning, arrows.meta}
+
+% -------------------------------------------------------------------------
+%  Theorem Box System
+% -------------------------------------------------------------------------
+\makeatletter
+\RequirePackage{thmtools}
+\RequirePackage[framemethod=TikZ]{mdframed}
+\RequirePackage{enumitem}
+
+\mdfsetup{skipabove=1em, skipbelow=0em}
+
+% >>> Theorem Macro <<<
+\newcommand{\colortheorem}[4][]{%
+  \declaretheoremstyle[
+    headfont=\bfseries\color{#4!70!black},
+    bodyfont=\normalfont,
+    mdframed={
+      linewidth=2pt,
+      rightline=false, topline=false, bottomline=false,
+      linecolor=#4, backgroundcolor=#4!5,
+    },
+    #1
+  ]{thmstyle@#2}
+
+  \declaretheorem[style=thmstyle@#2, name=#3, #1]{#2}
+
+  \AtBeginEnvironment{#2}{%
+    \setlength{\parskip}{2pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\topsep}{2pt}%
+    \setlength{\partopsep}{0pt}%
+
+    \newlist{coloreditemize}{itemize}{1}%
+    \setlist[coloreditemize,1]{%
+      leftmargin=1.5em,
+      labelindent=0pt,
+      parsep=0pt,
+      topsep=3pt,
+      partopsep=0pt,
+      itemsep=5pt,
+      label=\textcolor{#4!70!black}{\textbullet}
+    }%
+    \let\itemize\coloreditemize
+
+    \newlist{coloreddescription}{description}{1}%
+    \setlist[coloreddescription,1]{%
+      leftmargin=1.8em,
+      labelindent=0pt,
+      labelwidth=3cm,
+      labelsep=0.5em,
+      style=nextline,
+      font=\color{#4!70!black}\normalfont,
+      parsep=0pt,
+      topsep=3pt,
+      partopsep=0pt,
+      itemsep=5pt,
+    }%
+    \let\description\coloreddescription
+  }%
+}
+
+% >>> Theorem Definitions <<<
+% --- Conceptual definitions and notations ---
+\colortheorem{definition}{Definition}{ForestGreen}
+% Defines a new concept, quantity, or idea in formal terms.
+% Typically used to introduce foundational ideas (e.g., “Definition: Electric Field”).
+\colortheorem{notation}{Notation}{JungleGreen}
+% Introduces shorthand, symbols, or conventions used throughout the text.
+% Often accompanies a definition or is used to clarify variable usage.
+
+% --- Physical or mathematical results ---
+\colortheorem{property}{Property}{Mulberry}
+% States an observed or derived physical behavior.
+% Used for empirical or descriptive facts that do not require proof.
+\colortheorem{proposition}{Proposition}{BurntOrange}
+% States a mathematical or logical statement derived from definitions
+% or previous results; often a stepping stone toward a theorem or law.
+\colortheorem{lemma}{Lemma}{Yellow}
+% A supporting result used to prove a more significant theorem or law.
+% Usually short and directly leads to a key result.
+\colortheorem{law}{Law}{BrickRed}
+% States a fundamental physical law based on experimental or theoretical reasoning.
+% Examples: Coulomb’s Law, Newton’s Second Law.
+\colortheorem{theorem}{Theorem}{BrickRed}
+% Declares a major mathematical result with formal proof.
+% Similar visual style to “Law” for aesthetic and conceptual consistency.
+\colortheorem{corollary}{Corollary}{Salmon}
+% Presents an immediate consequence that follows from a theorem or law
+% with little or no additional reasoning.
+
+% --- Pedagogical and problem-solving environments ---
+\colortheorem[numbered=no]{example}{Example}{NavyBlue}
+% Demonstrates application of definitions, theorems, or physical principles.
+% Unnumbered for clarity and flow within explanatory text.
+\colortheorem{problem}{Problem}{black}
+% States an exercise or conceptual question.
+% Can include subparts or require proof/derivation.
+
+% >>> Remark Style (no background) <<<
+\declaretheoremstyle[
+  headfont=\bfseries\color{NavyBlue!70!black},
+  bodyfont=\normalfont,
+  mdframed={
+    linewidth=2pt,
+    rightline=false, topline=false, bottomline=false,
+    linecolor=NavyBlue, backgroundcolor=white,
+    innertopmargin=10pt,
+  },
+]{thmstyle@blueline}
+\declaretheorem[style=thmstyle@blueline, numbered=no, name=Remark]{remark}
+
+% >>> Proof & Explanatory Boxes <<<
+\declaretheoremstyle[
+  headfont=\bfseries\color{black!80!white},
+  bodyfont=\normalfont,
+  numbered=no,
+  mdframed={
+    linewidth=2pt,
+    rightline=false, topline=false, bottomline=false,
+    linecolor=black!60!white, backgroundcolor=black!1,
+  },
+  qed=\qedsymbol
+]{thmstyle@proofbox}
+\declaretheorem[style=thmstyle@proofbox, name=Proof]{replacementproof}
+\renewenvironment{proof}[1][\proofname]{\vspace{-12pt}\begin{replacementproof}}{\end{replacementproof}}
+
+\declaretheoremstyle[
+  headfont=\bfseries\color{black!80!white},
+  bodyfont=\normalfont,
+  numbered=no,
+  mdframed={
+    linewidth=2pt,
+    rightline=false, topline=false, bottomline=false,
+    linecolor=black!60!white, backgroundcolor=black!1,
+  },
+]{thmstyle@explanationbox}
+\declaretheorem[style=thmstyle@explanationbox, numbered=no, name=Note]{note}
+\declaretheorem[style=thmstyle@explanationbox, numbered=no, name=Solution]{solution}
+\declaretheorem[style=thmstyle@explanationbox, numbered=no, name=Explanation]{explanation}
+\makeatother
+
+% -------------------------------------------------------------------------
+%  Fancy Header/Footer Setup
+% -------------------------------------------------------------------------
+\setlength{\headheight}{14pt}
+\usepackage[twoside]{fancyhdr}
+
+% \newcommand{\fancychbegin}{%
+%   \fancyhf{}
+%   \pagestyle{fancy}
+%   \renewcommand{\headrulewidth}{1pt}
+%   \fancyfoot[C]{\rm{\textbf{$\cdot$\ \thepage\ $\cdot$}}}
+% }
+
+\newcommand{\fancypage}{%
+  \fancyhf{}
+  \pagestyle{fancy}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyfoot[C]{\rm{\textbf{$\cdot$\ \thepage\ $\cdot$}}}
+  \fancyhead[L]{\rm{\textbf{\nouppercase{\leftmark}}}}
+}
+
+\newcommand{\plainpage}{%
+  \fancyhf{}
+  \fancyfoot[C]{\rm{\textbf{$\cdot$\ \thepage\ $\cdot$}}}
+  \renewcommand{\headrulewidth}{0pt}
+}

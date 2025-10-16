@@ -1,0 +1,117 @@
+\graphicspath{{img/ch1}}
+
+\chapter{Electric Charge and Electric Fields}
+\setcounter{section}{-1}
+\section{The Fundamental Forces}
+Last semester in PHYS160, we explored the fundamental principles governing the motion of objects in the macroscopic physical world. From the origin of $F=ma$, we used mathematical tools to derive the likes of potential energy, momentum conservation, rigid body motion, Kepler's laws, etc. We also explored the same ideas from the alternate perspective of Lagrangian mechanics, which takes the same form in any generalized coordinate systems.\par
+Much of our focus was on gravitational forces, which is just one piece of a larger puzzle in physics. As we venture into new territory this semester, it's essential to broaden our perspective to include the full spectrum of interactions that shape the universe.\par
+At the heart of modern physics lie the four fundamental forces, which are the basic interactions responsible for all phenomena we observe.
+\begin{definition}[Fundamental Forces]
+    \ \\Fundamental forces are the interactions in nature that cannot be reduced to more basic interactions. There are four fundamental forces known to exist:\vspace{5pt}
+    \begin{center}
+        \begin{tabular}{rll}
+            \toprule
+            \bfseries Interaction & \bfseries Strength & \bfseries Range\\
+            \midrule
+            Gravity & $10^{-38}$ & Long\\
+            \bfseries Electromagnetism & $10^{-2}$ & Long\\
+            Weak & $10^{-6}$ & Short ($10^{-18}$)\\
+            Strong & $1$ & Short ($10^{-15}$)\\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{definition}
+\vspace{-12pt}
+\begin{remark}
+    \ \\Every single force that we've encountered during the last semester can be either classified into one of the four fundamental forces, or decomposed into some of them.\par For example, gravity is solely gravity; the force acted upon a table when someone pushes it is, at its essence, electromagnetic force. However, we still don't know the exact composition of certain really common forces, like friction.\par The simplicity we see in highly abstract models are often approximations of emergent behaviors of microscopic particles, and this emergent behavior can sometimes hinder our understanding to their origins.
+\end{remark}
+In the first part of the course, we will be focusing on electromagnetic force, the force acting between electrically charged particles.
+
+\section{Electric Charge}
+Similar to how most other physical quantities are discovered, electric charge was first observed as a qualitative phenomenon in 600 B.C. Back then, the Greeks called amber `elektron', from which the word electric is derived.
+\begin{property}[Triboelectric Effect]
+    \ \\Electric charge can be transferred from one object to another via contact or sliding with each other.
+    \begin{itemize}
+        \item Rubbing a plastic/amber rod with fur causes the rod to be \emph{negatively charged};
+        \item Rubbing a glass rod with silk causes the rod to be \emph{positively charged}. 
+    \end{itemize}
+    \label{property-triboelectric-effect}
+\end{property}
+Electric charge is one of the fundamental physical properties of matter. Like mass, we can measure the amount of electric charge that an object has, but we cannot exactly present it in a well-defined manner. 
+\begin{notation}[Electric Charge]
+    \ \\Electric charge is usually denoted by $Q$ or $q$.\\
+    Electric charge is measured in \emph{Coulombs} in the SI unit, or $\rm{C}$ in short.
+\end{notation}
+\vspace{-12pt}
+\begin{remark}
+    \ \\In circuitry, varying quantities are usually represented by lowercase symbols, while uppercase letters more often represent constant values.
+\end{remark}
+Instead of trying to actually define what charge is, we take an alternate route, and begin from understanding how charged objects actually behave.
+\begin{property}[Rules of attraction and repulsion]
+    \ \begin{itemize}
+        \item Charges of the same kind repel each other;
+        \item Charges of the opposite kind attract each other;
+        \item Charged objects attract neutral objects.
+    \end{itemize}
+\end{property}
+Despite the exotic behaviors, we can't actually tell the difference between a charged rod and a neutrally charged one just by looking at its appearance. This might implies that the triboelectric effect acts on a microscopic level. This becomes clear once we inspect the structure of an atom.\par
+\begin{figure}[htbp]
+    \centering
+    \input{img/ch1/structure.pdf_tex}
+    \caption{The structure of an atom}
+\end{figure}
+At the center of an atom lies its nucleus, which accounts for more than $99.9\%$ of the atom's total mass. It is consisted of positively charged protons and neutrally charged neutrons. The nucleus is enclosed by the negatively charged electron cloud.
+\begin{definition}[Elementary Charge]
+    \ \\$e$, the elementary charge, is a fundamental physical constant, defined as the electric charge carried by a single proton, or the negative of the electric charge carried by a single electron.
+    $$e=1.60217663 \times 10^{-19}\;[\rm{C}]$$
+\end{definition}
+Further experimentation gives us the two following essential properties of electric charge.
+\begin{property}[Charge Conservation]
+    \ \\The algebraic sum of electric charge in an isolated system is conserved.
+\end{property}
+\begin{property}[Charge Quantization]
+    \ \\The charge of any object is an integer multiple of the elementary charge $e$, i.e.
+    $$Q=n\cdot e,\quad n\in\Z.$$
+\end{property}
+\section{Conductors and Insulators}
+It is commonly seen that solid objects allow the flow of charge in a certain uniform direction. Solid materials are classified with accordance to their abilities to conduct this directed flow of charge into the following categories:
+\begin{definition}
+    \ \begin{description}
+        \item[Superconductor] A perfect conductor. Charge can move in superconductors without any resistance.
+        \item[Conductor] Charge can move freely in conductors, but with a certain resistance. The energy dissipated by this resistance is transformed into a byproduct -- heat.
+        \item[Semiconductor] Becomes conductor upon meeting certain requirements. Semiconductors are often used in the field of logic design.
+        \item[Insulator] Has no mobile charges.
+    \end{description}
+\end{definition}
+\vspace{-12pt}
+\begin{remark}
+    \ \\The idea of perfect conductors and perfect insulators are only ideal models. In reality, materials lie somewhere in between the two ends of this spectrum.
+\end{remark}
+\section{Induced Charge*}
+\section{Coulomb's Law*}
+\begin{law}[Coulomb's Law]
+    \ \\\begin{minipage}{0.6 \linewidth}
+        \vspace{3pt} The magnitude of the force between two charged particles at rest follows the inverse square law:
+        $$\lVert F\rVert=\frac{1}{4\pi\varepsilon_0}\cdot\frac{\lVert q_1\cdot q_2\rVert}{r^2}, $$
+        where $q_1, q_2$ are the electric charge carried by the two particles, and $r$ the distance between them.
+    \end{minipage}
+    \begin{minipage}{0.4 \linewidth}
+        \centering\input{img/ch1/coulomb.pdf_tex}
+    \end{minipage}
+\end{law}
+\vspace{-12pt}
+\begin{remark}
+    \ \\Coulomb is a large quantity! If we have $q_1=q_2=1\,\rm{C}$, $r=1\,\rm{m}$, then the Coulomb force between the two charges would be approximately $9\times10^9\,\rm{N}$!
+\end{remark}
+\vspace{-12pt}
+\begin{example}
+    \ \\If we compare the Coulomb force and the gravitational force between two $\alpha$-particles, we would get:
+    $$\frac{\lVert F_{\rm{elec}}\rVert}{\lVert F_{\rm{grav}}\rVert}=\frac{q_\alpha^2}{4\pi\varepsilon_0Gm_\alpha^2}\approx3.31\times10^{35},$$
+    i.e. the Coulomb force is tens of orders of magnitude larger than the gravitational force!
+\end{example}
+\section{Electric Field*}
+A setup consisting of several charged particles at rest would induce a Coulomb force to another test particle in space. Let's first recapitulate some fundamental results on potential force fields from mathematics and the discussion of last semester:
+\begin{definition}[Potential Field in $\R^3$]
+    \ \\Let $\Omega\subset\R^3$ be an open set. A vector field $\mathbf{F}: \Omega\to\R^3$ is a potential field if there exist a differentiable potential function $U: \Omega\to\R$ such that
+    \[\mathbf{F}(x)=-\nabla U(x),\quad\forall x\in\Omega.\]
+\end{definition}
