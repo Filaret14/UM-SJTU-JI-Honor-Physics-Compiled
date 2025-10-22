@@ -5,6 +5,7 @@
 % -------------------------------------------------------------------------
 \RequirePackage{booktabs}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
 \RequirePackage[margin=1in]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{titling}
@@ -21,6 +22,8 @@
 \RequirePackage{tikz}
 \RequirePackage{tikz-cd}
 \RequirePackage{pgfplots}
+\RequirePackage{nameref}
+\RequirePackage[hidelinks]{hyperref}
 \pgfplotsset{compat=1.13}
 
 % -------------------------------------------------------------------------
@@ -74,11 +77,71 @@
 %  Math Commands
 % -------------------------------------------------------------------------
 \newcommand\contra{\scalebox{1.1}{$\lightning$}}
-\newcommand\Z{\mathbb{Z}}
-\newcommand\R{\mathbb{R}}
+
+\usepackage{dsfont}
+\newcommand\Z{\mathds{Z}}
+\newcommand\R{\mathds{R}}
+\newcommand\Q{\mathds{Q}}
+\newcommand\C{\mathds{C}}
+\newcommand\F{\mathds{F}}
+
+\RequirePackage[a]{esvect}
+\RequirePackage{bm}
 \newcommand{\norm}[1]{\lVert #1 \rVert}
-% \newcommand{\vec}[1]{\overrightarrow{#1}}
-\newcommand{\vn}[1]{\norm{\vec{#1}}}
+
+\RequirePackage[scr=boondoxo, scrscaled=1.05]{mathalfa} % nice script fonts for tensors
+
+% Operator
+\DeclareMathOperator{\Mat}{Mat}
+
+% Bold vector notation
+\renewcommand{\vec}[1]{\bm{#1}}
+
+% Vector magnitude and normalization
+\newcommand{\mv}[1]{\left\lVert \vec{#1} \right\rVert} % vector magnitude |v|
+\newcommand{\nv}[1]{\hat{\vec{#1}}}                    % normalized vector v̂
+
+% Cartesian unit vectors
+\newcommand{\ihat}{\hat{\bm{\imath}}}
+\newcommand{\jhat}{\hat{\bm{\jmath}}}
+\newcommand{\khat}{\hat{\bm{k}}}
+
+% Matrices and tensors
+\newcommand{\mat}[1]{\bm{\mathrm{#1}}}   % matrix: bold upright roman
+\newcommand{\tens}[1]{\mathcal{#1}}      % tensor: calligraphic
+
+% === Vector calculus operators ===
+\newcommand{\grad}{\nabla}
+\newcommand{\gdiv}{\nabla\!\cdot\,}  % added spacing for proper alignment
+\newcommand{\grot}{\nabla\!\times\,}
+
+% === Differential calculus operators ===
+% Differential d: \diff
+% Differential d for process functions: \dproc
+\providecommand*{\diff}{\@ifnextchar^{\DIfF}{\DIfF^{}}}
+\def\DIfF^#1{\mathop{\mathrm{\mathstrut d}}\nolimits^{#1}\gobblespace}
+\def\gobblespace{\futurelet\diffarg\opspace}
+\def\opspace{\let\DiffSpace\!%
+  \ifx
+    \diffarg(\let\DiffSpace\relax
+  \else
+    \ifx
+      \diffarg[\let\DiffSpace\relax
+    \else
+      \ifx
+        \diffarg\{\let\DiffSpace\relax
+      \fi
+    \fi
+  \fi
+\DiffSpace}
+\usepackage{upgreek}
+\makeatletter
+\providecommand*{\udelta}{\@ifnextchar^{\UDelta}{\UDelta^{}}}
+\def\UDelta^#1{\mathop{\upDelta}\nolimits^{#1}\gobblespace}
+\makeatother
+\newcommand{\dproc}{\updelta}
+
+\RequirePackage{siunitx}
 
 % -------------------------------------------------------------------------
 %  Table of Contents Formatting

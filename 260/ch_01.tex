@@ -1,5 +1,32 @@
 \graphicspath{{img/ch1}}
 
+\setcounter{chapter}{-1}
+\chapter{Math Symbols Demo}
+\section{Scalars, Vectors, Matrices and Tensors}
+\[\vec{L}=\mathcal{I}\vec{\omega}=\mat{I}\vec{\omega}=\begin{pmatrix}
+    I_{\mathrm{ii}} & I_{\mathrm{ij}} & I_{\mathrm{ik}}\\
+    I_{\mathrm{ji}} & I_{\mathrm{jj}} & I_{\mathrm{jk}}\\
+    I_{\mathrm{ki}} & I_{\mathrm{kj}} & I_{\mathrm{kk}}
+\end{pmatrix}\begin{pmatrix}
+\omega_\mathrm{i}\\\omega_\mathrm{j}\\\omega_\mathrm{k}
+\end{pmatrix}\]
+
+\[\vec{B}(\vec{r})=\frac{\mu_0}{4\pi}\int\frac{I\cdot\diff\vec{l}\times(\vec{r}-\vec{r}')}{\norm{\vec{r}-\vec{r}'}^3}\]
+
+\section{Math Operators}
+\[\mat{A}=\begin{pmatrix}
+    1&2\\3&4
+\end{pmatrix}\in\Mat(2\times 2;\R)\]
+
+\section{Normed Vectors and Canonical Basis}
+\[\vec{v}=x\ihat+y\jhat+z\khat\]
+
+\section{Differential d's}
+\[\diff U=\dproc Q + \dproc W\]
+
+\section{Units}
+\[R_{\mathrm{equiv}}=\SI{2.71}{\ohm}\]
+
 \chapter{Electric Charge and Electric Fields}
 \setcounter{section}{-1}
 \section{The Fundamental Forces}
@@ -44,17 +71,18 @@ Electric charge is one of the fundamental physical properties of matter. Like ma
 \end{notation}
 \vspace{-12pt}
 \begin{remark}
-    \ \\In circuitry, varying quantities are usually represented by lowercase symbols, while uppercase letters more often represent constant values.
+    \ \\In circuitry, time-dependent quantities are usually represented by lowercase symbols, while uppercase letters more often represent invariants.
 \end{remark}
 Instead of trying to actually define what charge is, we take an alternate route, and begin from understanding how charged objects actually behave.
-\begin{property}[Rules of attraction and repulsion]
+\begin{property}[Rules of Attraction and Repulsion]
     \ \begin{itemize}
         \item Charges of the same kind repel each other;
         \item Charges of the opposite kind attract each other;
         \item Charged objects attract neutral objects.
     \end{itemize}
+    \label{ppt: attract and repel}
 \end{property}
-Despite the exotic behaviors, we can't actually tell the difference between a charged rod and a neutrally charged one just by looking at its appearance. This might implies that the triboelectric effect acts on a microscopic level. This becomes clear once we inspect the structure of an atom.\par
+Despite the exotic behaviors, we can't actually tell the difference between a charged rod and a neutrally charged one just by looking at their appearance. This might implies that the triboelectric effect acts on a microscopic level. This becomes clear once we inspect the structure of an atom.\par
 \begin{figure}[htbp]
     \centering
     \input{img/ch1/structure.pdf_tex}
@@ -88,16 +116,22 @@ It is commonly seen that solid objects allow the flow of charge in a certain uni
     \ \\The idea of perfect conductors and perfect insulators are only ideal models. In reality, materials lie somewhere in between the two ends of this spectrum.
 \end{remark}
 \section{Induced Charge*}
+
 \section{Coulomb's Law*}
 \begin{law}[Coulomb's Law]
-    \ \\\begin{minipage}{0.6 \linewidth}
-        \vspace{3pt} The magnitude of the force between two charged particles at rest follows the inverse square law:
-        $$\vn{F}=\frac{1}{4\pi\varepsilon_0}\cdot\frac{\norm{ q_1\cdot q_2}}{r^2}, $$
-        where $q_1, q_2$ are the electric charge carried by the two particles, and $r$ the distance between them.
-    \end{minipage}
+    \ \\ The magnitude of the force between two charged particles at rest follows the inverse square law, and the direction of the force always points from one charged particle to the other, abiding the \hyperref[ppt: attract and repel]{rules of attraction and repulsion}: 
+
     \begin{minipage}{0.4 \linewidth}
-        \centering\input{img/ch1/coulomb.pdf_tex}
+        \begin{align*}
+            \vec{F}&=\frac{1}{4\pi\varepsilon_0}\cdot\frac{q_1q_2}{\mv{r}^2}\nv{r}\\&=\frac{1}{4\pi\varepsilon_0}\cdot\frac{q_1q_2}{\mv{r}^3}\vec{r}, 
+        \end{align*}
     \end{minipage}
+    \begin{minipage}{0.6 \linewidth}
+        \centering\input{img/ch1/coulomb.pdf_tex}
+    \end{minipage}\vspace{1em}
+    where $q_1, q_2$ are the electric charge carried by the two particles, and $r$ the distance between them.
+    
+
 \end{law}
 \vspace{-12pt}
 \begin{remark}
@@ -112,6 +146,26 @@ It is commonly seen that solid objects allow the flow of charge in a certain uni
 \section{Electric Field*}
 A setup consisting of several charged particles at rest would induce a Coulomb force to another test particle in space. Let's first recapitulate some fundamental results on potential force fields from mathematics and the discussion of last semester:
 \begin{definition}[Potential Field in $\R^3$]
-    \ \\Let $\Omega\subset\R^3$ be an open set. A vector field $\mathbf{F}: \Omega\to\R^3$ is a potential field if there exist a differentiable potential function $U: \Omega\to\R$ such that
-    \[\mathbf{F}(x)=-\nabla U(x),\quad\forall x\in\Omega.\]
+    \ \\Let $\Omega\subset\R^3$ be an open set. A vector field $\vec{F}: \Omega\to\R^3$ is a potential field if there exist a differentiable potential function $U: \Omega\to\R$ such that
+    \[\vec{F}(x)=-\grad U(x),\quad\forall x\in\Omega.\]
 \end{definition}
+\begin{definition}[Simply Connected Set]
+    \ \\Loosely speaking, a set \(\Omega\subset\R^3\) is said to be simply connected if
+    \begin{itemize}
+        \item $\Omega$ is pathwise connected and
+        \item Every closed curve in $\Omega$ can be contracted to a simple point within $\Omega$.
+    \end{itemize}
+\end{definition}
+Other than explicitly integrating in order to find the potential function \(U\), there is a handy criteria to help identify if a vector field on a simply connected set is a potential field.
+\begin{theorem}[Criteria for Potential Field]
+    \ \\Let $\Omega\subset\R^3$ be a simply connected open set and suppose that $\vec{F}:\Omega\to\R^3$ is continuously differentiable. Then
+    $$\grot\vec{F}=-\grot\grad U=0\quad\implies\quad \vec{F}\text{ is a potential field.}$$
+\end{theorem}
+\begin{definition}[Electric Field]
+    \ \\The electric field that the charged particle $Q$ induces at the position occupied by $q$ is
+        $$\vec{E}=\frac{1}{4\pi\varepsilon_0}\cdot\frac{Q}{\mv{r}^2}\hat{\vec{r}}, $$
+        in which $\vec{r}$ is the displacement of $q$ with respect to $Q$.
+\end{definition}
+\begin{proposition}
+    \ \\The electric field induced by a point charge is spherically symmetrical.
+\end{proposition}

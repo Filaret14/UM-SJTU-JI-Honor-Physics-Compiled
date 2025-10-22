@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.4.2 (f4327f4, 2025-05-13), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'coulomb.pdf' (pdf, eps, ps)
+%% Accompanies image file 'electricfield.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{102.91273499bp}%
+    \setlength{\unitlength}{157.55142975bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,14 +50,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.62739846)%
+  \begin{picture}(1,0.53725902)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{coulomb.pdf}}%
-    \put(0.06172458,0.02098869){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$q_1$\end{tabular}}}}%
-    \put(0.54604845,0.30862909){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$q_2$\end{tabular}}}}%
-    \put(0.62299149,0.56102182){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{F}$\end{tabular}}}}%
-    \put(0.19729505,0.29256797){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{r}$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{coulomb.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{electricfield.pdf}}%
+    \put(0.12825224,0.00971098){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Q$\end{tabular}}}}%
+    \put(0.85513063,0.42137102){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$q$\end{tabular}}}}%
+    \put(0.47937631,0.20043646){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\vec{r}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{electricfield.pdf}}%
   \end{picture}%
 \endgroup%

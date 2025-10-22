@@ -9,6 +9,9 @@
    id="svg1"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    sodipodi:docname="coulomb.svg"
+   inkscape:export-filename="electricfield.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,20 +26,21 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="2.093699"
-     inkscape:cx="653.86668"
-     inkscape:cy="442.04062"
+     inkscape:zoom="4"
+     inkscape:cx="351.25"
+     inkscape:cy="459.625"
      inkscape:window-width="2560"
      inkscape:window-height="1351"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showgrid="false" />
   <defs
      id="defs1">
     <marker
        style="overflow:visible"
-       id="marker3"
+       id="marker4"
        refX="0"
        refY="0"
        orient="auto-start-reverse"
@@ -51,12 +55,12 @@
          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
          transform="scale(-0.5)"
-         id="path3" />
+         id="path4" />
     </marker>
     <marker
        style="overflow:visible"
        id="DartArrow"
-       refX="0"
+       refX="8"
        refY="0"
        orient="auto-start-reverse"
        inkscape:stockid="Dart arrow"
@@ -80,8 +84,8 @@
     <circle
        style="fill:#000000;stroke-width:0.78958"
        id="path1"
-       cx="164.92882"
-       cy="580.6806"
+       cx="110.84439"
+       cy="579.78809"
        r="2.6666667"
        transform="rotate(-30)"
        inkscape:export-filename="coulomb.pdf"
@@ -90,43 +94,69 @@
     <circle
        style="fill:#000000;stroke-width:0.78958"
        id="path1-5"
-       cx="357.68869"
-       cy="580.6806"
+       cx="193.54355"
+       cy="580.38312"
        r="2.6666667"
        transform="rotate(-30)" />
     <path
-       style="fill:#000000;stroke:#000000;stroke-width:1.33333;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#DartArrow);marker-end:url(#marker3)"
-       d="M 447.10537,412.37579 586.9125,331.65811"
-       id="path2" />
+       style="opacity:0.5;fill:#000000;stroke:#000000;stroke-width:1.334;stroke-dasharray:1.334, 2.668;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#DartArrow)"
+       d="M 385.94131,446.76254 457.49432,406.458"
+       id="path2"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:1.334;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4)"
+       d="M 458.13704,405.27616 498.53748,382.104"
+       id="path2-5"
+       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1.33333;stroke-dasharray:none;stroke-opacity:1"
-       x="417.44299"
-       y="441.32419"
+       x="391.6911"
+       y="461.16553"
        id="text3"><tspan
          sodipodi:role="line"
          id="tspan3"
-         x="417.44299"
-         y="441.32419">$q_1$</tspan></text>
+         x="391.6911"
+         y="461.16553">$q_1$</tspan></text>
     <text
        xml:space="preserve"
        style="text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1.33333;stroke-dasharray:none;stroke-opacity:1"
-       x="588.55853"
-       y="348.10568"
+       x="458.14856"
+       y="421.69638"
        id="text3-5"><tspan
          sodipodi:role="line"
          id="tspan3-2"
-         x="588.55853"
-         y="348.10568">$q_2$</tspan></text>
+         x="458.14856"
+         y="421.69638">$q_2$</tspan></text>
     <text
        xml:space="preserve"
        style="text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:1.33333;stroke-dasharray:none;stroke-opacity:1"
-       x="498.63904"
-       y="389.74084"
-       id="text4"><tspan
+       x="468.70645"
+       y="387.06381"
+       id="text3-5-4"><tspan
+         sodipodi:role="line"
+         id="tspan3-2-2"
+         x="468.70645"
+         y="387.06381">$\vec{F}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#000000;stroke:none;stroke-width:1.33333;stroke-dasharray:none;stroke-opacity:1"
+       x="410.29367"
+       y="423.90024"
+       id="text4"
+       inkscape:export-filename="text4.pdf"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan4"
-         x="498.63904"
-         y="389.74084">$\overrightarrow{r}$</tspan></text>
+         x="410.29367"
+         y="423.90024">$\vec{r}$</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0;stroke-width:1.15496;stroke-dasharray:none"
+       id="rect1"
+       width="178.00618"
+       height="30.792255"
+       x="368.80209"
+       y="384" />
   </g>
 </svg>
