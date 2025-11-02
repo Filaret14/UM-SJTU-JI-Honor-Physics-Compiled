@@ -24,4 +24,4 @@ $ latexmk -c
 
 The figures are drawn using Inkscape, and exported as PDF + LaTeX.
 
-Line widths are all set to `1pt`, and arrow tips does not scale.
+Line widths are all set to `1pt`, arrow tips do not scale.
