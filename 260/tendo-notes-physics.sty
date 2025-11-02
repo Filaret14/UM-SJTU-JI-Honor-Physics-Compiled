@@ -36,17 +36,21 @@
 % -------------------------------------------------------------------------
 %  Title Page Customization
 % -------------------------------------------------------------------------
-\newcommand{\university}[1]{\textsc{#1}}
 \newcommand{\submissiondate}[1]{\textsc{#1}}
 \newcommand{\courseno}[1]{\textrm{\textbf{#1}}}
 \newcommand{\coursename}[1]{#1}
 
+\newcommand{\setcourseno}[1]{\def\@courseno{#1}}
+\newcommand{\setcoursename}[1]{\def\@coursename{#1}}
+\newcommand{\setcourseuniversity}[1]{\def\@courseuniversity{#1}}
+
+
 \pretitle{\begin{center}\LARGE\bfseries}
-\posttitle{\par\end{center}\vskip 0.5em}
+    \posttitle{\par\end{center}\vskip 0.5em}
 \preauthor{\begin{center}\large}
-\postauthor{\par\end{center}}
+    \postauthor{\par\end{center}}
 \predate{\begin{center}\large}
-\postdate{\par\end{center}}
+    \postdate{\par\end{center}}
 
 \newcommand{\makecustomtitlepage}[1]{%
   \begin{titlepage}
@@ -54,24 +58,21 @@
     \vspace*{2cm}
     \IfFileExists{#1}{\includegraphics[width=0.3\textwidth]{#1}}{\vspace{1cm}}
     \vspace{1cm}
-
+    
     {\Huge\bfseries\thetitle\par}
     \vspace{0.5cm}
+    {\large\textsc{\@courseuniversity}\par}
+    \vspace{-0.5em}
     {\Huge\courseno{\@courseno}\par}
     {\coursename{\@coursename}\par}
-    \vspace{0.35cm}
-    {\large\university{\@courseuniversity}\par}
     \vspace{5cm}
-
+    
     {\theauthor\par}
     \vspace{1cm}
     {\large\thedate\par}
   \end{titlepage}
 }
 
-\newcommand{\setcourseno}[1]{\def\@courseno{#1}}
-\newcommand{\setcoursename}[1]{\def\@coursename{#1}}
-\newcommand{\setcourseuniversity}[1]{\def\@courseuniversity{#1}}
 
 % -------------------------------------------------------------------------
 %  Math Commands
@@ -114,6 +115,7 @@
 \newcommand{\grad}{\nabla}
 \newcommand{\gdiv}{\nabla\!\cdot\,}  % added spacing for proper alignment
 \newcommand{\grot}{\nabla\!\times\,}
+\newcommand{\lap}{\Delta}
 
 % === Differential calculus operators ===
 % Differential d: \diff
@@ -133,7 +135,7 @@
       \fi
     \fi
   \fi
-\DiffSpace}
+  \DiffSpace}
 \usepackage{upgreek}
 \makeatletter
 \providecommand*{\udelta}{\@ifnextchar^{\UDelta}{\UDelta^{}}}
@@ -172,36 +174,36 @@
 \renewcommand{\thepart}{\Alph{part}}
 
 \titleformat{\part}[display]
-  {\LARGE\sc}
-  {\centering\Huge\textbf{\textrm{Part \thepart}}}
-  {0em}
-  {\centering}
-  [\vspace{0.7cm}]
+{\LARGE\sc}
+{\centering\Huge\textbf{\textrm{Part \thepart}}}
+{0em}
+{\centering}
+[\vspace{0.7cm}]
 
 \titleformat{\chapter}[display]
-  {\LARGE\rm}
-  {\textbf{\textrm{Chapter \thechapter}}}
-  {0em}
-  {}
-  [\vspace{-0.8cm}]
+{\LARGE\rm}
+{\textbf{\textrm{Chapter \thechapter}}}
+{0em}
+{}
+[\vspace{-0.8cm}]
 
 \titleformat{\section}
-  {\Large\bfseries\rmfamily}
-  {\thesection}
-  {1em}
-  {}
+{\Large\bfseries\rmfamily}
+{\thesection}
+{1em}
+{}
 
 \titleformat{\subsection}
-  {\large\bfseries\rmfamily}
-  {\thesubsection}
-  {1em}
-  {}
+{\large\bfseries\rmfamily}
+{\thesubsection}
+{1em}
+{}
 
 \titleformat{\subsubsection}
-  {\normalsize\bfseries\rmfamily}
-  {\thesubsubsection}
-  {1em}
-  {}
+{\normalsize\bfseries\rmfamily}
+{\thesubsubsection}
+{1em}
+{}
 
 % -------------------------------------------------------------------------
 %  TikZ and PGF Setup
@@ -218,27 +220,27 @@
 
 \mdfsetup{skipabove=1em, skipbelow=0em}
 
-% >>> Theorem Macro <<<
 \newcommand{\colortheorem}[4][]{%
   \declaretheoremstyle[
-    headfont=\bfseries\color{#4!70!black},
+    headfont=\bfseries\color{#4},
     bodyfont=\normalfont,
     mdframed={
-      linewidth=2pt,
-      rightline=false, topline=false, bottomline=false,
-      linecolor=#4, backgroundcolor=#4!5,
-    },
+        linewidth=1pt,
+        rightline=false,topline=false,bottomline=false,
+        linecolor=#4,
+        backgroundcolor=#4!2
+      },
     #1
-  ]{thmstyle@#2}
-
-  \declaretheorem[style=thmstyle@#2, name=#3, #1]{#2}
-
+  ]{thmstyle@#2}%
+  %
+  \declaretheorem[style=thmstyle@#2,name=#3,#1]{#2}%
+  %
   \AtBeginEnvironment{#2}{%
     \setlength{\parskip}{2pt}%
     \setlength{\parsep}{0pt}%
     \setlength{\topsep}{2pt}%
     \setlength{\partopsep}{0pt}%
-
+    %
     \newlist{coloreditemize}{itemize}{1}%
     \setlist[coloreditemize,1]{%
       leftmargin=1.5em,
@@ -247,10 +249,10 @@
       topsep=3pt,
       partopsep=0pt,
       itemsep=5pt,
-      label=\textcolor{#4!70!black}{\textbullet}
+      label=\textcolor{#4}{\textbullet}%
     }%
     \let\itemize\coloreditemize
-
+    %
     \newlist{coloreddescription}{description}{1}%
     \setlist[coloreddescription,1]{%
       leftmargin=1.8em,
@@ -258,15 +260,16 @@
       labelwidth=3cm,
       labelsep=0.5em,
       style=nextline,
-      font=\color{#4!70!black}\normalfont,
+      font=\color{#4}\normalfont,
       parsep=0pt,
       topsep=3pt,
       partopsep=0pt,
-      itemsep=5pt,
+      itemsep=5pt
     }%
     \let\description\coloreddescription
   }%
 }
+
 
 % >>> Theorem Definitions <<<
 % --- Conceptual definitions and notations ---
@@ -310,11 +313,11 @@
   headfont=\bfseries\color{NavyBlue!70!black},
   bodyfont=\normalfont,
   mdframed={
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=NavyBlue, backgroundcolor=white,
-    innertopmargin=10pt,
-  },
+      linewidth=1pt,
+      rightline=false, topline=false, bottomline=false,
+      linecolor=NavyBlue!70!black, backgroundcolor=white,
+      innertopmargin=10pt,
+    },
 ]{thmstyle@blueline}
 \declaretheorem[style=thmstyle@blueline, numbered=no, name=Remark]{remark}
 
@@ -324,10 +327,10 @@
   bodyfont=\normalfont,
   numbered=no,
   mdframed={
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=black!60!white, backgroundcolor=black!1,
-  },
+      linewidth=2pt,
+      rightline=false, topline=false, bottomline=false,
+      linecolor=black!60!white, backgroundcolor=black!1,
+    },
   qed=\qedsymbol
 ]{thmstyle@proofbox}
 \declaretheorem[style=thmstyle@proofbox, name=Proof]{replacementproof}
@@ -338,10 +341,10 @@
   bodyfont=\normalfont,
   numbered=no,
   mdframed={
-    linewidth=2pt,
-    rightline=false, topline=false, bottomline=false,
-    linecolor=black!60!white, backgroundcolor=black!1,
-  },
+      linewidth=2pt,
+      rightline=false, topline=false, bottomline=false,
+      linecolor=black!60!white, backgroundcolor=black!1,
+    },
 ]{thmstyle@explanationbox}
 \declaretheorem[style=thmstyle@explanationbox, numbered=no, name=Note]{note}
 \declaretheorem[style=thmstyle@explanationbox, numbered=no, name=Solution]{solution}
@@ -351,7 +354,7 @@
 % -------------------------------------------------------------------------
 %  Fancy Header/Footer Setup
 % -------------------------------------------------------------------------
-\setlength{\headheight}{14pt}
+\setlength{\headheight}{14.5pt}
 \usepackage[twoside]{fancyhdr}
 
 % \newcommand{\fancychbegin}{%

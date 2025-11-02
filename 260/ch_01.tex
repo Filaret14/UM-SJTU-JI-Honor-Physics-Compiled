@@ -4,19 +4,19 @@
 \chapter{Math Symbols Demo}
 \section{Scalars, Vectors, Matrices and Tensors}
 \[\vec{L}=\mathcal{I}\vec{\omega}=\mat{I}\vec{\omega}=\begin{pmatrix}
-    I_{\mathrm{ii}} & I_{\mathrm{ij}} & I_{\mathrm{ik}}\\
-    I_{\mathrm{ji}} & I_{\mathrm{jj}} & I_{\mathrm{jk}}\\
-    I_{\mathrm{ki}} & I_{\mathrm{kj}} & I_{\mathrm{kk}}
-\end{pmatrix}\begin{pmatrix}
-\omega_\mathrm{i}\\\omega_\mathrm{j}\\\omega_\mathrm{k}
-\end{pmatrix}\]
+        I_{\mathrm{ii}} & I_{\mathrm{ij}} & I_{\mathrm{ik}} \\
+        I_{\mathrm{ji}} & I_{\mathrm{jj}} & I_{\mathrm{jk}} \\
+        I_{\mathrm{ki}} & I_{\mathrm{kj}} & I_{\mathrm{kk}}
+    \end{pmatrix}\begin{pmatrix}
+        \omega_\mathrm{i} \\\omega_\mathrm{j}\\\omega_\mathrm{k}
+    \end{pmatrix}\]
 
 \[\vec{B}(\vec{r})=\frac{\mu_0}{4\pi}\int\frac{I\cdot\diff\vec{l}\times(\vec{r}-\vec{r}')}{\norm{\vec{r}-\vec{r}'}^3}\]
 
 \section{Math Operators}
 \[\mat{A}=\begin{pmatrix}
-    1&2\\3&4
-\end{pmatrix}\in\Mat(2\times 2;\R)\]
+        1 & 2 \\3&4
+    \end{pmatrix}\in\Mat(2\times 2;\R)\]
 
 \section{Normed Vectors and Canonical Basis}
 \[\vec{v}=x\ihat+y\jhat+z\khat\]
@@ -38,12 +38,12 @@ At the heart of modern physics lie the four fundamental forces, which are the ba
     \begin{center}
         \begin{tabular}{rll}
             \toprule
-            \bfseries Interaction & \bfseries Strength & \bfseries Range\\
+            \bfseries Interaction      & \bfseries Strength & \bfseries Range    \\
             \midrule
-            Gravity & $10^{-38}$ & Long\\
-            \bfseries Electromagnetism & $10^{-2}$ & Long\\
-            Weak & $10^{-6}$ & Short ($10^{-18}$)\\
-            Strong & $1$ & Short ($10^{-15}$)\\
+            Gravity                    & $10^{-38}$         & Long               \\
+            \bfseries Electromagnetism & $10^{-2}$          & Long               \\
+            Weak                       & $10^{-6}$          & Short ($10^{-18}$) \\
+            Strong                     & $1$                & Short ($10^{-15}$) \\
             \bottomrule
         \end{tabular}
     \end{center}
@@ -60,11 +60,11 @@ Similar to how most other physical quantities are discovered, electric charge wa
     \ \\Electric charge can be transferred from one object to another via contact or sliding with each other.
     \begin{itemize}
         \item Rubbing a plastic/amber rod with fur causes the rod to be \emph{negatively charged};
-        \item Rubbing a glass rod with silk causes the rod to be \emph{positively charged}. 
+        \item Rubbing a glass rod with silk causes the rod to be \emph{positively charged}.
     \end{itemize}
     \label{property-triboelectric-effect}
 \end{property}
-Electric charge is one of the fundamental physical properties of matter. Like mass, we can measure the amount of electric charge that an object has, but we cannot exactly present it in a well-defined manner. 
+Electric charge is one of the fundamental physical properties of matter. Like mass, we can measure the amount of electric charge that an object has, but we cannot exactly present it in a well-defined manner.
 \begin{notation}[Electric Charge]
     \ \\Electric charge is usually denoted by $Q$ or $q$.\\
     Electric charge is measured in \emph{Coulombs} in the SI unit, or $\rm{C}$ in short.
@@ -119,18 +119,18 @@ It is commonly seen that solid objects allow the flow of charge in a certain uni
 
 \section{Coulomb's Law*}
 \begin{law}[Coulomb's Law]
-    \ \\ The magnitude of the force between two charged particles at rest follows the inverse square law, and the direction of the force always points from one charged particle to the other, abiding the \hyperref[ppt: attract and repel]{rules of attraction and repulsion}: 
-
-    \begin{minipage}{0.4 \linewidth}
+    \ \\ The magnitude of the force between two charged particles at rest follows the inverse square law, and the direction of the force always points from one charged particle to the other, abiding the \hyperref[ppt: attract and repel]{rules of attraction and repulsion}:
+    \\\hspace{0.05\linewidth}
+    \begin{minipage}{0.55 \linewidth}
         \begin{align*}
-            \vec{F}&=\frac{1}{4\pi\varepsilon_0}\cdot\frac{q_1q_2}{\mv{r}^2}\nv{r}\\&=\frac{1}{4\pi\varepsilon_0}\cdot\frac{q_1q_2}{\mv{r}^3}\vec{r}, 
+            \vec{F} & =\frac{1}{4\pi\varepsilon_0}\cdot\frac{q_1q_2}{\mv{r}^2}\nv{r} \\&=\frac{1}{4\pi\varepsilon_0}\cdot\frac{q_1q_2}{\mv{r}^3}\vec{r},
         \end{align*}
     \end{minipage}
-    \begin{minipage}{0.6 \linewidth}
+    \begin{minipage}{0.4 \linewidth}
         \centering\input{img/ch1/coulomb.pdf_tex}
-    \end{minipage}\vspace{1em}
+    \end{minipage}\vspace{1em}\\
     where $q_1, q_2$ are the electric charge carried by the two particles, and $r$ the distance between them.
-    
+
 
 \end{law}
 \vspace{-12pt}
@@ -163,8 +163,8 @@ Other than explicitly integrating in order to find the potential function \(U\),
 \end{theorem}
 \begin{definition}[Electric Field]
     \ \\The electric field that the charged particle $Q$ induces at the position occupied by $q$ is
-        $$\vec{E}=\frac{1}{4\pi\varepsilon_0}\cdot\frac{Q}{\mv{r}^2}\hat{\vec{r}}, $$
-        in which $\vec{r}$ is the displacement of $q$ with respect to $Q$.
+    $$\vec{E}=\frac{1}{4\pi\varepsilon_0}\cdot\frac{Q}{\mv{r}^2}\hat{\vec{r}}, $$
+    in which $\vec{r}$ is the displacement of $q$ with respect to $Q$.
 \end{definition}
 \begin{proposition}
     \ \\The electric field induced by a point charge is spherically symmetrical.
